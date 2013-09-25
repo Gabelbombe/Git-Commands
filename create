@@ -14,6 +14,6 @@ fi
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
 # Create and initialise the project
-mkdir ../web-archive/"$project" && \
-cd ../web-archive/"$project" && \
+mkdir -p /srv/data/web-archive/"$project" && \
+cd /srv/data/web-archive/"$project" && \
 git --bare init
