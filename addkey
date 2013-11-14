@@ -36,9 +36,9 @@ fi
 cd ..
 
 # Add the key to the authorised keys file and clean up
-mkdir -p /srv/data/git/.ssh &&\
-echo -n "no-agent-forwarding,no-port-forwarding,no-X11-forwarding " >> /srv/data/git/.ssh/authorized_keys &&\
-cat $keyfile >> /srv/data/git/.ssh/authorized_keys
+mkdir -p /home/git/data/git/.ssh &&\
+echo -n "no-agent-forwarding,no-port-forwarding,no-X11-forwarding " >> /home/git/data/git/.ssh/authorized_keys &&\
+cat $keyfile >> /home/git/data/git/.ssh/authorized_keys
 rm $keyfile
 
 # Display the fingerprint for reference

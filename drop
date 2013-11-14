@@ -13,7 +13,7 @@ fi
 # Set the project name, adding .git if necessary
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
-dir=/srv/data/git/web-archive/"$project"
+dir=/home/git/data/git/web-archive/"$project"
 
 # Drop the directory
 [ -d $dir ] && rm -rf $dir
