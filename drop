@@ -1,13 +1,9 @@
 #!/bin/sh
 
 # If no project name is given
-if [ $# -eq 0 ]
-then
-
+if [ $# -eq 0 ]; then
 	# Display usage and stop
-	echo "Usage: drop <project.git>"
-	exit 1
-
+	echo "Usage: drop <project.git>" ; exit 1
 fi
 
 # Set the project name, adding .git if necessary

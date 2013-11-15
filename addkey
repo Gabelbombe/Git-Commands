@@ -1,13 +1,8 @@
 #!/bin/sh
 
 # If the user is not root
-if [ "$USERNAME" != "root" ]
-then
-
-	# Dislpay a notice and stop
-	echo "Sorry, only root can use this command."
-	exit 1
-
+if [ "$(id -u)" != "0" ]; then
+  echo "This script must be run as root" 1>&2 ; exit 1
 fi
 
 # Read in the SSH key
@@ -23,14 +18,11 @@ echo "$key" > $keyfile
 fingerprint=$(ssh-keygen -lf $keyfile)
 
 # Check for errors
-if [ $(echo "$fingerprint" | egrep -c '(R|D)SA') -eq 0 ]
-then
-
+if [ $(echo "$fingerprint" | egrep -c '(R|D)SA') -eq 0 ]; then
 	# Display the fingerprint error and clean up
 	echo "Error: $fingerprint"
 	rm $keyfile
 	exit 1
-
 fi
 
 cd ..
