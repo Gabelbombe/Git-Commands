@@ -13,7 +13,7 @@ read key
 
 # Place the key in a temporary file (it's hard to get ssh-keygen
 # to read from stdin; <<< works for bash, but is non-posix)
-keyfile=$(mktemp XXXXX) &&\
+keyfile=$(mktemp /tmp/XXXXX) &&\
 echo "$key" > $keyfile
 
 # Generate a fingerprint
