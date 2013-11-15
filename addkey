@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 # If the user is not root
 if [ "$(id -u)" != "0" ]; then
   echo "This script must be run as root" 1>&2 ; exit 1
@@ -11,7 +13,7 @@ read key
 
 # Place the key in a temporary file (it's hard to get ssh-keygen
 # to read from stdin; <<< works for bash, but is non-posix)
-keyfile=$(tempfile) &&\
+keyfile=$(mktemp) &&\
 echo "$key" > $keyfile
 
 # Generate a fingerprint
