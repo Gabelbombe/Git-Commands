@@ -9,4 +9,4 @@ fi
 # Set the project name, adding .git if necessary
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
-[ -d "/home/git/web-archive/${project}" ] && return 1 || return 0
+[ -d "/home/git/web-archive/${project}" ] && echo 1 || echo 0
