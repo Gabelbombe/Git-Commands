@@ -1,4 +1,7 @@
 #!/bin/sh
+# CPR : Jd Daniel :: Ehime-ken
+# MOD : 2014-03-01 @ 15:45:50
+# VER : Version 1b
 
 # If no project name is given
 if [ $# -eq 0 ]; then
@@ -10,6 +13,6 @@ fi
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
 # Create and initialise the project
-mkdir -p /home/git/web-archive/"$project" && \
-cd /home/git/web-archive/"$project" && \
+mkdir -p /home/git/repositories/"$project" && \
+cd /home/git/repositories/"$project" && \
 git --bare init
