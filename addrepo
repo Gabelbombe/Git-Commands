@@ -12,7 +12,7 @@ fi
 # Set the project name, adding .git if necessary
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
-[ git ls-remote "${project}" &> /dev/null ] && {
+[ $(git ls-remote $project) &> /dev/null ] && {
     cd /home/git/repositories/
     git clone --mirror "${project}"
 
