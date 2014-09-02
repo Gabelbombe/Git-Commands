@@ -6,8 +6,7 @@
 # local repo test function
 function pong
 {
-    git ls-remote "${1}" &>-
-    [ "$?" -ne 0 ] && { 
+    [ $(git ls-remote "${1}") &> /dev/null ] && { 
         return 1 
     } || {
         return 0
@@ -22,7 +21,6 @@ fi
 
 # Set the project name, adding .git if necessary
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
-
 
 [ $(pong "${project}") == 1 ] && {
     cd /home/git/repositories/
