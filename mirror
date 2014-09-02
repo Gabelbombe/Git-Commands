@@ -6,15 +6,16 @@
 # If no project name is given
 if [ $# -eq 0 ]; then
     # Display usage and stop
-    echo "Usage: addrepo <project.git>" ; exit 1
+    echo "Usage: mirror <project.git> <repository-url>" ; exit 1
 fi
 
 # Set the project name, adding .git if necessary
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
-[ "$(git ls-remote $project 2> /dev/null)" ] && {
-    cd /home/git/repositories/
-    git clone --mirror "${project}"
-} || {
-    echo "[ERROR] Unable to read from '${project}'"; exit 1
+cd /home/git/repositories/
+if [ -d  "${project}" ] && {
+    cd /tmp && git clone "git@localhost:repositories/${project}" 
+    cd "${project}"
+
+    git push --mirror -a -t "${project}" "${2}"
 }
