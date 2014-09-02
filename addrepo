@@ -4,7 +4,7 @@
 # VER : Version 1a
 
 # local repo test function
-function t
+function pong
 {
     git ls-remote "${1}" &>-
     [ "$?" -ne 0 ] && { 
@@ -24,7 +24,7 @@ fi
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
 
-[ t "${project}" == 1 ] && {
+[ $(pong "${project}") == 1 ] && {
     cd /home/git/repositories/
     git clone --mirror "${project}"
 
