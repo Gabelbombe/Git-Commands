@@ -10,13 +10,11 @@ if [ $# -eq 0 ]; then
 fi
 
 # Set the project name, adding .git if necessary
-project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
+project=$(echo "$1" | sed 's/\.git$\|$/.git/i')
 
 cd /home/git/repositories/
-if [ -d  "${project}" ] && {
+
+if [ -d  "${project}" ]; then
     cd /tmp && git clone "git@localhost:repositories/${project}" 
-    cd "${project}"
-
-    git push --mirror -a -t "${project}" "${2}"
-
-}
+    cd "${project}" && git push --mirror -a -t "${project}" "${2}"
+fi
