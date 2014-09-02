@@ -24,7 +24,7 @@ fi
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
 
-[ $(t "${project}") == 1 ] && {
+[ t "${project}" == 1 ] && {
     cd /home/git/repositories/
     git clone --mirror "${project}"
 
