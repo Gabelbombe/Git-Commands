@@ -22,10 +22,10 @@ fi
 
 # Set the project name, adding .git if necessary
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
-repo="$(echo "${project}" |awk -NF '/' '{print $(NF)}')"
 
-cd /home/git/repositories/
-[ $(t "${project}") -eq 1 ] && {
+
+[ $(t $project) == 1 ] && {
+    cd /home/git/repositories/
     git clone --mirror "${project}"
 
     ## might need
