@@ -6,7 +6,7 @@
 # local repo test function
 function pong
 {
-    [ $(git ls-remote "${1}") &> /dev/null ] && { 
+    [ $(git ls-remote "${1}") 2>/dev/null ] && { 
         return 1 
     } || {
         return 0
