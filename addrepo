@@ -3,16 +3,6 @@
 # MOD : 2014-09-02 @ 13:46:03
 # VER : Version 1a
 
-# local repo test function
-function pong
-{
-    [ $(git ls-remote "${1}") 2>/dev/null ] && { 
-        return 1 
-    } || {
-        return 0
-    }
-}
-
 # If no project name is given
 if [ $# -eq 0 ]; then
     # Display usage and stop
@@ -22,7 +12,7 @@ fi
 # Set the project name, adding .git if necessary
 project=$(echo "$*" | sed 's/\.git$\|$/.git/i')
 
-[ $(pong "${project}") == 1 ] && {
+[ git ls-remote "${project}") &> /dev/null ] && {
     cd /home/git/repositories/
     git clone --mirror "${project}"
 
