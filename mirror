@@ -16,5 +16,5 @@ cd /home/git/repositories/
 
 if [ -d  "${project}" ]; then
     cd /tmp && git clone "git@localhost:repositories/${project}" 
-    cd "${project}" && git push --mirror -a -t "${project}" "${2}"
+    cd "${project}" && git push --mirror -a -t "${2}"
 fi
